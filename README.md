@@ -16,7 +16,8 @@ Depois de criar sua conta utilizando o Github é possível criar uma lembrança 
 Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/NflWj5JZkl2twSYo0cxiqh/C%C3%A1psula-do-tempo-%E2%80%A2-Trilha-Ignite-(Community)?type=design&node-id=205%3A3&t=Omj9DZ1At9WC0nAF-1).
 
 ## 💻 Uso
-Em seu terminal:
+Crie sua aplicação através do Github e preencha as variáveis ambientes em um arquivo chamado .env.
+Depois, em seu terminal:
 ```bash
 # Clone o repositório
 git clone https://github.com/ViGF/nlw-spacetime.git
