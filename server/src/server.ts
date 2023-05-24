@@ -1,6 +1,4 @@
-import 'dotenv/config'
-
-import fastify from 'fastify'
+import { FastifyInstance } from 'fastify'
 import cors from '@fastify/cors'
 import jwt from '@fastify/jwt'
 import multipart from '@fastify/multipart'
@@ -11,30 +9,22 @@ import { uploadRoutes } from './routes/upload'
 import { resolve } from 'path'
 import { env } from 'process'
 
-const app = fastify()
+export default async function (app: FastifyInstance) {
+  app.register(multipart)
 
-app.register(multipart)
-
-app.register(cors, {
-  origin: true, // Todas as URLs (Front-Ends) permitidas (por enquanto)
-})
-
-app.register(jwt, {
-  secret: `${env.SECRET}`,
-})
-
-app.register(memoriesRoutes)
-app.register(authRoutes)
-app.register(uploadRoutes)
-app.register(staticLib, {
-  root: resolve(__dirname, '../uploads'),
-  prefix: '/uploads',
-})
-
-app
-  .listen({
-    port: 3333,
+  app.register(cors, {
+    origin: true, // Todas as URLs (Front-Ends) permitidas (por enquanto)
   })
-  .then(() => {
-    console.log('🚀 HTTP server running on port 3333')
+
+  app.register(jwt, {
+    secret: `${env.SECRET}`,
   })
+
+  app.register(memoriesRoutes)
+  app.register(authRoutes)
+  app.register(uploadRoutes)
+  app.register(staticLib, {
+    root: resolve(__dirname, '../uploads'),
+    prefix: '/uploads',
+  })
+}
