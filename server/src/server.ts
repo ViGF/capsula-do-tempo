@@ -9,6 +9,7 @@ import { memoriesRoutes } from './routes/memories'
 import { authRoutes } from './routes/auth'
 import { uploadRoutes } from './routes/upload'
 import { resolve } from 'path'
+import { env } from 'process'
 
 const app = fastify()
 
@@ -19,7 +20,7 @@ app.register(cors, {
 })
 
 app.register(jwt, {
-  secret: 'seytuiawo4htnpwivwvu',
+  secret: `${env.SECRET}`,
 })
 
 app.register(memoriesRoutes)
