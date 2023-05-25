@@ -1,4 +1,4 @@
-import { FastifyInstance } from 'fastify'
+import Fastify from 'fastify'
 import cors from '@fastify/cors'
 import jwt from '@fastify/jwt'
 import multipart from '@fastify/multipart'
@@ -9,7 +9,11 @@ import { uploadRoutes } from './routes/upload'
 import { resolve } from 'path'
 import { env } from 'process'
 
-export default async function (app: FastifyInstance) {
+export function init() {
+  const app = Fastify({
+    logger: false,
+  })
+
   app.register(multipart)
 
   app.register(cors, {
@@ -27,4 +31,17 @@ export default async function (app: FastifyInstance) {
     root: resolve(__dirname, '../uploads'),
     prefix: '/uploads',
   })
+
+  return app
+}
+
+// Execute the app when called directly( ex.: "npm run dev")
+if (require.main === module) {
+  init()
+    .listen({
+      port: 3333,
+    })
+    .then(() => {
+      console.log('Running on port 3333')
+    })
 }
