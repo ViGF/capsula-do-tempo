@@ -3,7 +3,6 @@ import { cookies } from 'next/headers'
 import { TimelineButton } from '@/components/TimelineButton'
 import EmptyMemories from '@/components/EmptyMemories'
 import { api } from '@/lib/api'
-import { PageProps } from '../../../../.next/types/app/layout'
 
 interface MemoryType {
   id: string
@@ -11,7 +10,7 @@ interface MemoryType {
   content: string
 }
 
-export default async function Memory({ params }: PageProps) {
+export default async function Memory({ params }: any) {
   const isAuthenticated = cookies().has('token')
 
   if (!isAuthenticated) {
