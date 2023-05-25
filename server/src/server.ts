@@ -17,7 +17,7 @@ export function init() {
   app.register(multipart)
 
   app.register(cors, {
-    origin: true, // Todas as URLs (Front-Ends) permitidas (por enquanto)
+    origin: ['https://capsula-do-tempo.vercel.app/'],
   })
 
   app.register(jwt, {
