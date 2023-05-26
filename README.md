@@ -1,7 +1,7 @@
 # Cápsula do Tempo
 Cápsula do Tempo. Colecione momentos marcantes da sua jornada e compartilhe (se quiser) com o mundo!
 
-Depois de criar sua conta utilizando o Github é possível criar uma lembrança onde estará salva no seu feed. O login do usuário é persistido através de um JWT gerado pelo back-end e armazenda em um cookie. Aplicação desenvolvida durante o NLW Spacetime da Rocketseat.
+Depois de criar sua conta utilizando o Github é possível criar uma lembrança onde estará salva no seu feed. O login do usuário é persistido através de um JWT gerado pelo back-end e armazenda em um cookie. As imagens são armazenadas no ImageKit, CDN gratuita. Aplicação desenvolvida durante o NLW Spacetime da Rocketseat.
 
 ![cover](web/public/home.png)
 ![cover](web/public/feed.png)
