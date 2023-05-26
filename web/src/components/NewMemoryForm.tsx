@@ -59,7 +59,7 @@ export function NewMemoryForm() {
       },
     )
 
-    router.replace('/')
+    router.replace('/?success')
   }
 
   return (
