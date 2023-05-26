@@ -59,9 +59,7 @@ export function NewMemoryForm() {
       },
     )
 
-    router.push('/', {
-      forceOptimisticNavigation: false,
-    })
+    router.replace('/')
   }
 
   return (
