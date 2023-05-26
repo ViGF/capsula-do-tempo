@@ -24,9 +24,24 @@ export function NewMemoryForm() {
       const uploadFormData = new FormData()
       uploadFormData.set('file', fileToUpload)
 
-      const uploadResponse = await api.post('/upload', uploadFormData)
+      // @ts-ignore-next-line
+      uploadFormData.set('fileName', fileToUpload.name)
+      uploadFormData.set('folder', 'nlw-spacetime')
 
-      coverUrl = uploadResponse.data.fileUrl
+      const uploadResponse = await api.post(
+        'https://upload.imagekit.io/api/v1/files/upload',
+        uploadFormData,
+        {
+          headers: {
+            Authorization: `Basic ${btoa(
+              // @ts-ignore-next-line
+              process.env.NEXT_PUBLIC_IMAGEKIT_PRIVATE_KEY,
+            )}`,
+          },
+        },
+      )
+
+      coverUrl = uploadResponse.data.url
     }
 
     const token = Cookie.get('token')
@@ -90,7 +105,9 @@ export function NewMemoryForm() {
       <button
         type="submit"
         disabled={loading}
-        className="inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600"
+        className={`inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black hover:bg-green-600 ${
+          loading && 'cursor-not-allowed'
+        }`}
       >
         Salvar
       </button>
