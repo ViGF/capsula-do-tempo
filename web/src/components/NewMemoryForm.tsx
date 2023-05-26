@@ -33,10 +33,7 @@ export function NewMemoryForm() {
         uploadFormData,
         {
           headers: {
-            Authorization: `Basic ${btoa(
-              // @ts-ignore-next-line
-              process.env.NEXT_PUBLIC_IMAGEKIT_PRIVATE_KEY,
-            )}`,
+            Authorization: `Basic ${process.env.NEXT_PUBLIC_IMAGEKIT_PRIVATE_KEY}`,
           },
         },
       )
